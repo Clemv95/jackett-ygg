@@ -1,17 +1,17 @@
 # Prowlarr with YGGTorrent Indexers
 
-[![Auto Rebuild](https://github.com/almottier/prowlarr-ygg/actions/workflows/auto-rebuild.yml/badge.svg)](https://github.com/almottier/prowlarr-ygg/actions/workflows/auto-rebuild.yml)
+[![Auto Rebuild](https://github.com/clemv95/jackett-ygg/actions/workflows/auto-rebuild.yml/badge.svg)](https://github.com/clemv95/jackett-ygg/actions/workflows/auto-rebuild.yml)
 
-An up-to-date Prowlarr Docker image with YGGTorrent indexers (Ygg-API and ygege) pre-installed.
+An up-to-date Prowlarr Docker image with YGGTorrent indexers (Ygg-API and Ygege) pre-installed.
 
 ```text
-ghcr.io/almottier/prowlarr-ygg
+ghcr.io/clemv95/jackett-ygg
 ```
 
 ## Features
 
-- Based on the latest [hotio/prowlarr](https://hotio.dev/containers/prowlarr/) image
-- Two YGGTorrent indexers pre-installed in `/config/Definitions/Custom/`:
+- Based on the latest [hotio/jackett](https://hotio.dev/containers/jackett/) image
+- Two YGGTorrent indexers pre-installed in `/app/Definitions/`:
   - [Clemv95/Ygg-API](https://gist.github.com/Clemv95/8bfded23ef23ec78f6678896f42a2b60) using [yggapi](https://yggapi.eu/)
   - [UwUDev/ygege](https://github.com/UwUDev/ygege): see [ygege docker guide](https://github.com/UwUDev/ygege/blob/develop/docs/docker-guide.md) for docker setup
 - Automatically rebuilds when the base image or either indexer is updated
@@ -23,14 +23,14 @@ ghcr.io/almottier/prowlarr-ygg
 
 ```bash
 docker run --rm \
-    --name prowlarr \
+    --name jackett \
     -p 9696:9696 \
     -e PUID=1000 \
     -e PGID=1000 \
     -e UMASK=002 \
     -e TZ="Europe/Paris" \
     -v /<host_folder_config>:/config \
-    ghcr.io/almottier/prowlarr-ygg
+    ghcr.io/clemv95/jackett-ygg
 ```
 
 ### compose
@@ -38,8 +38,8 @@ docker run --rm \
 ```yaml
 services:
   prowlarr:
-    container_name: prowlarr
-    image: ghcr.io/almottier/prowlarr-ygg
+    container_name: jackett
+    image: ghcr.io/clemv95/jackett-ygg
     ports:
       - "9696:9696"
     environment:
@@ -53,6 +53,6 @@ services:
 
 ## Configuration
 
-After starting the container, both YGGTorrent indexers (Ygg-API and ygege) will be available in Prowlarr's indexer settings:
+After starting the container, both YGGTorrent indexers (Ygg-API and ygege) will be available in Jackett's indexer settings:
 
 ![](./Screenshot.png)
