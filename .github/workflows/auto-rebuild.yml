@@ -113,7 +113,13 @@ jobs:
             echo "rebuild=false" >> $GITHUB_OUTPUT
             echo "No updates found. No rebuild needed."
           fi
-          
+      - name: Compute lowercase repo name
+        id: repo-lower
+        run: |
+          # GITHUB_REPOSITORY est du format owner/RepoName
+          REPO_LOWER=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
+          echo "repo_lower=$REPO_LOWER" >> $GITHUB_OUTPUT
+          echo "Lowercase repo: $REPO_LOWER"
       - name: Build and push
         if: steps.check-rebuild.outputs.rebuild == 'true'
         uses: docker/build-push-action@v5
@@ -124,8 +130,8 @@ jobs:
           build-args: |
             GIST_HASH=${{ steps.gist-hash.outputs.hash }}
           tags: |
-            ghcr.io/${{ toLower(github.repository) }}:latest
-            ghcr.io/${{ toLower(github.repository) }}:${{ github.sha }}
+            ghcr.io/${{ toLower(steps.repo-lower.outputs.repo_lower) }}:latest
+            ghcr.io/${{ toLower(steps.repo-lower.outputs.repo_lower) }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           labels: |
