@@ -130,8 +130,8 @@ jobs:
           build-args: |
             GIST_HASH=${{ steps.gist-hash.outputs.hash }}
           tags: |
-            ghcr.io/${{ toLower(steps.repo-lower.outputs.repo_lower) }}:latest
-            ghcr.io/${{ toLower(steps.repo-lower.outputs.repo_lower) }}:${{ github.sha }}
+            ghcr.io/${{ steps.repo-lower.outputs.repo_lower }}:latest
+            ghcr.io/${{ steps.repo-lower.outputs.repo_lower }}:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           labels: |
