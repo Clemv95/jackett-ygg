@@ -1,5 +1,7 @@
 # Prowlarr with YGGTorrent Indexers
 
+Thanks to @almottier for making the Prowlarr version, i've forked his repo to make the same thing to Jackett
+
 [![Auto Rebuild](https://github.com/clemv95/jackett-ygg/actions/workflows/auto-rebuild.yml/badge.svg)](https://github.com/clemv95/jackett-ygg/actions/workflows/auto-rebuild.yml)
 
 An up-to-date Prowlarr Docker image with YGGTorrent indexers (Ygg-API and Ygege) pre-installed.
