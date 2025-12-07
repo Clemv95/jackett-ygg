@@ -26,7 +26,7 @@ ghcr.io/clemv95/jackett-ygg
 ```bash
 docker run --rm \
     --name jackett \
-    -p 9696:9696 \
+    -p 9117:9117 \
     -e PUID=1000 \
     -e PGID=1000 \
     -e UMASK=002 \
@@ -43,7 +43,7 @@ services:
     container_name: jackett
     image: ghcr.io/clemv95/jackett-ygg
     ports:
-      - "9696:9696"
+      - "9117:9117"
     environment:
       - PUID=1000
       - PGID=1000
