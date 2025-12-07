@@ -140,7 +140,7 @@ jobs:
       - name: Update tracking variables
         if: steps.check-rebuild.outputs.rebuild == 'true'
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GH_TOKEN: ${{ secrets.jackett }}
         run: |
           # Update repository variables with new digests/hashes using gh CLI
           gh variable set LAST_BASE_DIGEST --body "${{ steps.base-digest.outputs.digest }}"
