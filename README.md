@@ -4,7 +4,7 @@ Thanks to @almottier for making the Prowlarr version, i've forked his repo to ma
 
 [![Auto Rebuild](https://github.com/clemv95/jackett-ygg/actions/workflows/auto-rebuild.yml/badge.svg)](https://github.com/clemv95/jackett-ygg/actions/workflows/auto-rebuild.yml)
 
-An up-to-date Prowlarr Docker image with YGGTorrent indexers (Ygg-API and Ygege) pre-installed.
+An up-to-date Jackett Docker image with YGGTorrent indexers (Ygg-API and Ygege) pre-installed.
 
 ```text
 ghcr.io/clemv95/jackett-ygg
