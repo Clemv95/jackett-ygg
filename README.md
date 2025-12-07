@@ -1,4 +1,4 @@
-# Prowlarr with YGGTorrent Indexers
+# Jackett with YGGTorrent Indexers
 
 Thanks to @almottier for making the Prowlarr version, i've forked his repo to make the same thing to Jackett
 
