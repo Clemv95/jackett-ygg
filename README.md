@@ -39,7 +39,7 @@ docker run --rm \
 
 ```yaml
 services:
-  prowlarr:
+  jackett:
     container_name: jackett
     image: ghcr.io/clemv95/jackett-ygg
     ports:
