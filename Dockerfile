@@ -1,4 +1,4 @@
-FROM ghcr.io/hotio/prowlarr:latest
+FROM ghcr.io/hotio/jackett:latest
 
 # Build args to bust cache when dependencies change
 ARG GIST_HASH=unknown
