@@ -4,7 +4,7 @@ FROM ghcr.io/hotio/jackett:latest
 ARG GIST_HASH=unknown
 
 RUN apk update && \
-    apk add --no-cache git && \
+    apk add --no-cache --no-scripts git && \
     rm -rf /var/cache/apk/*
 
 # Download YGG-API indexer
