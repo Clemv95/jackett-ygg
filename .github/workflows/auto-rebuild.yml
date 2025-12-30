@@ -79,6 +79,26 @@ jobs:
             echo "hash=$YGEGE_HASH" >> $GITHUB_OUTPUT
             echo "Current ygege hash: $YGEGE_HASH"
 
+      - name: Get current lacale indexer hash
+        id: lacale-hash
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 2
+          max_attempts: 3
+          retry_wait_seconds: 5
+          command: |
+            # Fetch raw content from lacale repository
+            LACALE_CONTENT=$(curl -s https://raw.githubusercontent.com/patriote1k/Jackett/refs/heads/feature-la-cale/src/Jackett.Common/Definitions/lacale-api.yml)
+            LACALE_HASH=$(echo "$LACALE_CONTENT" | sha256sum | cut -d' ' -f1)
+
+            if [ -z "$LACALE_CONTENT" ] ; then
+              echo "Got empty content, response was:"
+              echo "$LACALE_CONTENT" | head -5
+              exit 1
+            fi
+            echo "hash=$LACALE_HASH" >> $GITHUB_OUTPUT
+            echo "Current lacale hash: $LACALE_HASH"
+
       - name: Check if rebuild needed
         id: check-rebuild
         run: |
@@ -89,6 +109,8 @@ jobs:
           CURRENT_GIST_HASH="${{ steps.gist-hash.outputs.hash }}"
           LAST_YGEGE_HASH="${{ vars.LAST_YGEGE_HASH || 'none' }}"
           CURRENT_YGEGE_HASH="${{ steps.ygege-hash.outputs.hash }}"
+          LAST_LACALE_HASH="${{ vars.LAST_LACALE_HASH || 'none' }}"
+          CURRENT_LACALE_HASH="${{ steps.lacale-hash.outputs.hash }}"
 
           REBUILD=false
 
@@ -104,6 +126,11 @@ jobs:
 
           if [ "$LAST_YGEGE_HASH" != "$CURRENT_YGEGE_HASH" ]; then
             echo "ygege indexer updated. Rebuild needed."
+            REBUILD=true
+          fi
+
+          if [ "$LAST_LACALE_HASH" != "$CURRENT_LACALE_HASH" ]; then
+            echo "lacale indexer updated. Rebuild needed."
             REBUILD=true
           fi
 
@@ -146,3 +173,4 @@ jobs:
           gh variable set LAST_BASE_DIGEST --body "${{ steps.base-digest.outputs.digest }}"
           gh variable set LAST_GIST_HASH --body "${{ steps.gist-hash.outputs.hash }}"
           gh variable set LAST_YGEGE_HASH --body "${{ steps.ygege-hash.outputs.hash }}"
+          gh variable set LAST_LACALE_HASH --body "${{ steps.lacale-hash.outputs.hash }}"

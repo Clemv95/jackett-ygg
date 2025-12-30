@@ -1,4 +1,4 @@
-# Jackett with YGGTorrent Indexers
+# Jackett with YGGTorrent, La Cale Indexers
 
 Thanks to @almottier for making the Prowlarr version, i've forked his repo to make the same thing to Jackett
 
@@ -16,6 +16,7 @@ ghcr.io/clemv95/jackett-ygg
 - Two YGGTorrent indexers pre-installed in `/app/Definitions/`:
   - [Clemv95/Ygg-API](https://gist.github.com/Clemv95/8bfded23ef23ec78f6678896f42a2b60) using [yggapi](https://yggapi.eu/)
   - [UwUDev/ygege](https://github.com/UwUDev/ygege): see [ygege docker guide](https://github.com/UwUDev/ygege/blob/develop/docs/docker-guide.md) for docker setup
+- One LaCale indexer pre-installed in `/app/Definitions/`
 - Automatically rebuilds when the base image or either indexer is updated
 - Ready to use after container startup
 
