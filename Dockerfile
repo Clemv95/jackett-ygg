@@ -21,7 +21,7 @@ RUN git clone https://github.com/UwUDev/ygege.git /tmp/ygege && \
     rm -rf /tmp/ygege
 
 # Download lacale indexer
-RUN wget https://raw.githubusercontent.com/patriote1k/Jackett/refs/heads/feature-la-cale/src/Jackett.Common/Definitions/lacale-api.yml -O /app/indexer-definitions/lacale-api.yml
+RUN wget https://raw.githubusercontent.com/Clemv95/Jackett/refs/heads/patch-2/src/Jackett.Common/Definitions/lacale-api.yml -O /app/indexer-definitions/lacale-api.yml
 
 # Copy init script and make it executable
 COPY init-indexers.sh /app/init-indexers.sh
