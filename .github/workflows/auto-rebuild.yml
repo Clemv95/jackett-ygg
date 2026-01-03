@@ -94,7 +94,7 @@ jobs:
           retry_wait_seconds: 5
           command: |
             # Fetch raw content from lacale repository
-            LACALE_CONTENT=$(curl -s https://raw.githubusercontent.com/Clemv95/Jackett/refs/heads/patch-2/src/Jackett.Common/Definitions/lacale-api.yml)
+            LACALE_CONTENT=$(curl -s https://raw.githubusercontent.com/patriote1k/Jackett/refs/heads/feature-la-cale/src/Jackett.Common/Definitions/lacale-api.yml)
             LACALE_HASH=$(echo "$LACALE_CONTENT" | sha256sum | cut -d' ' -f1)
 
             if [ -z "$LACALE_CONTENT" ] ; then
