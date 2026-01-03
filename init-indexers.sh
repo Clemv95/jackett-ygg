@@ -1,23 +1,15 @@
 #!/bin/bash
+set -e
 
-mkdir -p /app/Definitions/
+# Créer les répertoires nécessaires
+mkdir -p /config/Jackett/Indexers
+mkdir -p /config/Jackett/DataProtection
 
-# Copy YGG-API indexer
-echo "Installing YGG-API indexer definition..."
-cp /app/indexer-definitions/ygg-api-download.yml /app/Definitions/
+# Copier les indexers personnalisés
+echo "Copying custom indexers to config volume..."
+cp -f /app/indexer-definitions/*.yml /config/Jackett/Indexers/ 2>/dev/null || true
 
-# Copy ygege indexer
-echo "Installing ygege indexer definition..."
-cp /app/indexer-definitions/ygege.yml /app/Definitions/
+echo "Custom indexers copied successfully"
 
-# Copy lacale indexer
-echo "Installing lacale indexer definition..."
-cp /app/indexer-definitions/lacale-api.yml /app/Definitions/
-
-chown -R jackett:jackett /app/Definitions/
-chmod -R 755 /app/Definitions/
-
-echo "Indexers installed successfully (YGG-API, ygege,lacale)"
-
-# Execute the original entrypoint with all arguments
-exec dotnet /app/jackett.dll "$@"
+# Lancer Jackett
+exec dotnet /app/jackett.dll --NoRestart --NoUpdates --DataFolder=/config

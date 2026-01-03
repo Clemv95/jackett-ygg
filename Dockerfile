@@ -35,12 +35,10 @@ RUN wget https://raw.githubusercontent.com/JigSawFr/lacale-prowlarr-indexer/refs
 COPY init-indexers.sh /app/init-indexers.sh
 RUN chmod +x /app/init-indexers.sh && \
     chown jackett:jackett /app/init-indexers.sh
-    
-USER jackett
 
 VOLUME /config
 EXPOSE 9117
 
 
-# Use custom entrypoint that copies indexer to mounted volume
-ENTRYPOINT ["/app/init-indexers.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/app/init-indexers.sh"]
