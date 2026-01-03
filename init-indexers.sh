@@ -20,4 +20,4 @@ chmod -R 755 /app/Definitions/
 echo "Indexers installed successfully (YGG-API, ygege,lacale)"
 
 # Execute the original entrypoint with all arguments
-exec /init "$@"
+exec dotnet /app/Jackett.dll "$@"
