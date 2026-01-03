@@ -14,10 +14,9 @@ cp /app/indexer-definitions/ygege.yml /app/Definitions/
 echo "Installing lacale indexer definition..."
 cp /app/indexer-definitions/lacale-api.yml /app/Definitions/
 
-chown -R hotio:hotio /app/Definitions/
 chmod -R 755 /app/Definitions/
 
 echo "Indexers installed successfully (YGG-API, ygege,lacale)"
 
 # Execute the original entrypoint with all arguments
-exec dotnet /app/Jackett.dll "$@"
+exec dotnet /app/jackett.dll "$@"
