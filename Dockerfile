@@ -33,8 +33,8 @@ RUN wget https://raw.githubusercontent.com/JigSawFr/lacale-prowlarr-indexer/refs
 
 # Copy init script and make it executable
 COPY init-indexers.sh /app/init-indexers.sh
-RUN chmod +x /app/init-indexers.sh && \
-    chown jackett:jackett /app/init-indexers.sh
+RUN chmod +x /app/init-indexers.sh /entrypoint.sh && \
+    chown -R 1000:1000 /app/indexer-definitions /app/init-indexers.sh
 
 VOLUME /config
 EXPOSE 9117
