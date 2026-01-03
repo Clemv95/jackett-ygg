@@ -32,8 +32,7 @@ RUN wget https://raw.githubusercontent.com/JigSawFr/lacale-prowlarr-indexer/refs
 
 # Copy init script and make it executable
 COPY init-indexers.sh /app/init-indexers.sh
-RUN chmod +x /app/init-indexers.sh && \
-    chown hotio:hotio /app/init-indexers.sh
+RUN chmod +x /app/init-indexers.sh
 
 
 VOLUME /config
