@@ -14,6 +14,7 @@ cp /app/indexer-definitions/ygege.yml /app/Definitions/
 echo "Installing lacale indexer definition..."
 cp /app/indexer-definitions/lacale-api.yml /app/Definitions/
 
+chown -R jackett:jackett /app/Definitions/
 chmod -R 755 /app/Definitions/
 
 echo "Indexers installed successfully (YGG-API, ygege,lacale)"
