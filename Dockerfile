@@ -1,5 +1,6 @@
 FROM ghcr.io/clemv95/jackett-ygg-nonturbo:latest
 
+USER root
 
 # Build args to bust cache when dependencies change
 ARG GIST_HASH=unknown
@@ -34,7 +35,8 @@ RUN wget https://raw.githubusercontent.com/JigSawFr/lacale-prowlarr-indexer/refs
 COPY init-indexers.sh /app/init-indexers.sh
 RUN chmod +x /app/init-indexers.sh && \
     chown jackett:jackett /app/init-indexers.sh
-
+    
+USER jackett
 
 VOLUME /config
 EXPOSE 9117
