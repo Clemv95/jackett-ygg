@@ -7,7 +7,7 @@ mkdir -p /config/Jackett/DataProtection
 
 # Copier les indexers personnalisés
 echo "Copying custom indexers to config volume..."
-cp -f /app/indexer-definitions/*.yml /config/Jackett/Indexers/ 2>/dev/null || true
+cp -f /app/indexer-definitions/*.yml /app/Definitions/ 2>/dev/null || true
 
 echo "Custom indexers copied successfully"
 
